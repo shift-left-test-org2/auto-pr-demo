@@ -28,7 +28,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.inputs.commit-hash || github.event.client_payload.commit-hash || github.event.inputs.branch-name || github.event.client_payload.branch-name || github.event.repository.default_branch }}
+          ref: ${{ github.event.inputs.commit-hash || github.event.client_payload.commit_hash || github.event.inputs.branch-name || github.event.client_payload.branch || github.event.repository.default_branch }}
 
       - uses: jfrog/frogbot@v3
         env:
@@ -37,8 +37,8 @@ jobs:
           JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           command: auto-pr
-          component-name: ${{ github.event.inputs.component-name || github.event.client_payload.component-name }}
-          affected-version: ${{ github.event.inputs.affected-version || github.event.client_payload.affected-version }}
-          fix-version: ${{ github.event.inputs.fix-version || github.event.client_payload.fix-version }}
-          branch-name: ${{ github.event.inputs.branch-name || github.event.client_payload.branch-name || github.event.repository.default_branch }}
-          commit-hash: ${{ github.event.inputs.commit-hash || github.event.client_payload.commit-hash }}
+          component-name: ${{ github.event.inputs.component-name || github.event.client_payload.component_name }}
+          affected-version: ${{ github.event.inputs.affected-version || github.event.client_payload.affected_version }}
+          fix-version: ${{ github.event.inputs.fix-version || github.event.client_payload.fix_version }}
+          branch-name: ${{ github.event.inputs.branch-name || github.event.client_payload.branch || github.event.repository.default_branch }}
+          commit-hash: ${{ github.event.inputs.commit-hash || github.event.client_payload.commit_hash }}
